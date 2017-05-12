@@ -1,0 +1,190 @@
+servers = (
+  { address = "irc.supernets.org"; chatnet = "super"; port = "6697"; autoconnect = "no"; use_ssl = "yes"; }
+);
+
+chatnets = {
+  super = { type = "IRC"; };
+};
+
+channels = (
+  { name = "#dev";       chatnet = "super"; autojoin = "yes"; },
+  { name = "#help";      chatnet = "super"; autojoin = "yes"; },
+  { name = "#pumpcoin";  chatnet = "super"; autojoin = "yes"; },
+  { name = "#rap";       chatnet = "super"; autojoin = "yes"; },
+  { name = "#scroll";    chatnet = "super"; autojoin = "yes"; },
+  { name = "#superbowl"; chatnet = "super"; autojoin = "yes"; }
+);
+
+aliases = {
+  ascii          = "eval exec -o cat ~/.irssi/ascii/${0}.txt";
+  bomb           = "eval msg $C $0 just wait till i get a supernets then enough http requests then boom";
+  bs             = "eval lastlog -file ~/.irssi/logs/${C}@${chatnet}.${0}.log";
+  chatrain       = "eval msg $C             ya                                                                                                                                                                                          nice; eval msg $C                                             chillin                                                                                                                                                                                 u?; eval msg $C                                                                                     nice                                                                            ty                                                              np; eval msg $C                                              ok                                                                                                                nice                                                                 %%                                                                                                       true; eval msg $C                                                                                      same;";
+  cooldown       = "eval msg $C \00301,08/!\\\\\\\\\00308,04 WARNING \00301,08/!\\\\\\\\\003 \00304This keyboard is currently on \00312COOL DOWN\00304 until $0 can handle it.";
+  cooleddown     = "eval msg $C [\00309ALERT\003] This keyboard is no longer on fire. Chats my proceed accordingly.";
+  emergency      = "eval msg $C \002\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!";
+  exempt         = "mode +eI *!$X *!$X";
+  fakick         = "eval msg $C \00314<\00302Kick\00314>  $1-";
+  fbi            = "eval msg $C The Federal Bureau of Investigation logged a record of your entry into this illegal chatroom along with your IP address due to potential violations of 18 U.S.C. º 1030. Your IP address is entered into our criminaldatabase as well as the Department of Homeland Security. If you are not associated with these claims we strongly advise you to type '/part'. Thank you.";
+  limp           = "eval msg $C OR YOULL BE LEAVIN WITH A FAT LIP; eval msg $C ITS ALL ABOUT THE HE SAYS SHE SAYS BULL SHIT.; eval msg $C I THINK YOU BETTER QUIT TALKIN THAT SHIT PUNK; eval msg $C SO COME ON AND GET IT.; eval msg $C ITS JUST ONE OF THOSE DAYS";
+  lovecock       = "eval msg $C \0030,1                                                  ; eval msg $C \0030,1      \0035,7#######\0030,1                                     ; eval msg $C \0030,1   \0035,7#####\0030       \0030,1   hey guys im $0, let me tell  ; eval msg $C \0030,1  \0035,7#####\0030     \0035_\0031  \0035)\0030,1  you a little about myself...        ; eval msg $C \0030,1  \0035,7#####\0030     \003010\0030  \0031o\0030 \0030,1                                \0031 ; eval msg $C \0030,1  \0035,7###\0031@\0035# \0030       \0031 \0030  \0030,1  i LOVE cock                   ; eval msg $C \0030,1  \0035,7#\0030   \0035# \0030       \0031>\0030   \0030,1                               ; eval msg $C \0030,1  \0035,7#\0030        \0035\\\\;\\\\;\\\\;\\\\;\\\\;\\\\;\\\\;\\\\;\0030,1     i LOVE cock               ; eval msg $C \0030,1  \0030,7      \0030,1                                          ; eval msg $C \0030,1  \0030,7           \0030,1                              \0031 \0030      ; eval msg $C \0030,1  \0030,7          \0031 \0035...W.\0030,1    I ROMANTICIZE THE NOTION    ; eval msg $C \0030,1  \0030,7          \0031 \0035...\0030,1      OF HAVING COCKS AND BALLS   ; eval msg $C \0030,1 \0030,7           \0030,1          ON ME AT ALL TIMES OF MY    ; eval msg $C \0030,7     \0031 >\0030,1               LIFE.                       ; eval msg $C \0030,7      \0030,1;";
+  mh             = "script exec Irssi::active_win()->{active}->command(sprintf(\"msg %s %s $*\", q/$C/, \\$_->{nick})) for (Irssi::active_win()->{active}->nicks());";
+  normalchats    = "eval msg $C \00308,05▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄\003 ＮＯＲＭＡＬ ＣＨＡＴＳ \00308,05▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄";
+  opp            = "mode +q $N";
+  prison         = "eval msg $C \00304----------------------------------------------------------------------[IMPENETRABLE IRC PRISON WALL]-----------------------------------------------------------------------";
+  retard         = "eval msg $C I AM GONNA MAKE U A MOTHA FUCKEN RETARD u r FUCKEN DEAD CUNT IM GONNA SMASH THAT HEAD OF URS UNTIL IT LOOKS LIKE HALAS FUCKED UP FACE u peice of fucken SHIT who the FUCK im gonna beat that head until u spit blood ";
+  rmop           = "eval me $C \00314<\00302Mode\00314> [\003-o $0\00314]\003 by \002$N";
+  sb             = "/toggle awl_viewer";
+  srschats       = "eval msg $C \00308,05▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄\003 ＳＥＲＩＯＵＳ ＣＨＡＴＳ \00308,05▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄";
+  supernets_ad_1 = "mh \00301,08/!\\\\\00308,04 WARNING \00301,08/!\\\\\003 \00304This channel has moved to \00312IRC.SUPERNETS.ORG #SUPERBOWL\003";
+  supernets_ad_2 = "mh \00304CAN WE CONTINUE THIS CONVERSATION AT IRC.SUPERNETS.ORG #SUPERBOWL FOR FUCKS SAKE";
+  ta             = "eval topic $C $topic | $*";
+  terminate      = "eval kick $C $0 \00308,04                    T E R M I N A T E D                    \003";
+  warning        = "eval msg $C \00301,08/!\\\\\\\\\00308,04 WARNING \00301,08/!\\\\\\\\\003 \00304$*";
+  wc             = "window close";
+  your           = "eval msg $C look its not hard, your isnt you're.. you're is YOU ARE. jesus. did you even make it out of 8th grade. can you even COUNT TO EIGHT, fuckin your an IDIOT.. and im sure right now your eaiting to CORRECT ME on using your in the wrong context now that i've TAUGHT YOU HOW TO USE IT OMG JESUS";
+};
+
+statusbar = {
+  items = {
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+    time = "";
+    user = "";
+    window = "";
+    window_empty = "";
+    prompt = "{prompt $[.15]itemname@$tag}";
+    prompt_empty = "{prompt $winname}";
+    topic = " $topic";
+    topic_empty = "";
+    act = "";
+    lag = "";
+    more = "-- more --";
+  };
+  default = {
+    window = {
+      disabled = "yes";
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "active";
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    window_inact = {
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+      disabled = "yes";
+    };
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      position = "100";
+      visible = "always";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        colours = { alignment = "right"; };
+        input = { priority = "10"; };
+      };
+    };
+    topic = {
+      type = "root";
+      placement = "top";
+      position = "1";
+      visible = "always";
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    inact = { items = { }; disabled = "yes"; };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+
+settings = {
+  core = {
+    nick = "acidvegas";
+    quit_message = "G-line: User has been permanently banned from this network.";
+    real_name = "acidvegas";
+    settings_autosave = "yes";
+    timestamp_format = "%I:%M";
+    user_name = "phish";
+    server_reconnect_time = "15min";
+    recode_fallback = "UTF-8";
+    recode_out_default_charset = "UTF-8";
+    recode_transliterate = "yes";
+    recode = "yes";
+    recode_autodetect_utf8 = "yes";
+    awaylog_level = "hilight";
+    awaylog_file = "~/.irssi/logs/away.log";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "irc/core" = {
+    alternate_nick = "acidvegas_";
+    channel_sync = "yes";
+    cmds_max_at_once = "0";
+    cmd_queue_speed = "0";
+    ctcp_version_reply = "?";
+    ctcp_userinfo_reply = "?";
+    max_ctcp_queue = "0";
+    part_message = "G-line: User has been permanently banned from this network.";
+    usermode = "+ix";
+    skip_motd = "yes";
+  };
+  "irc/flood" = { flood_timecheck = "0"; flood_max_msgs = "0"; };
+  "fe-common/core" = {
+    show_names_on_join = "no";
+    beep_msg_level = "MSGS HILIGHT";
+    term_charset = "UTF-8";
+    max_command_history = "25";
+    autolog_path = "~/.irssi/logs/$tag/$0.log";
+  };
+  "perl/core/scripts" = {
+    nickcolor_colors = "3 5 6 7 10 11 12 13 14";
+    awl_shared_sbar = "OFF";
+    awl_block = "-14";
+    awl_viewer = "no";
+    awl_prefer_name = "yes";
+    awl_sbar_maxlength = "yes";
+    chansort_autosort = "yes";
+    awl_mouse = "yes";
+    screen_away_message = "I am away from the keyboard. (screen is dettached)"
+  };
+};
+
+windows = { 1 = { immortal = "yes"; name = "status"; level = "ALL"; }; };
+mainwindows = { 1 = { first_line = "7"; lines = "13"; }; };
+logs = { };
+keyboard = ( 
+  { key = "meta-[M"; id = "command"; data = "mouse_xterm"; }
+);
+ignores = ( { level = "CTCPS DCC DCCMSGS INVITES"; } );
