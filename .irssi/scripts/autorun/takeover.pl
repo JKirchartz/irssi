@@ -1,5 +1,5 @@
 # Takeover (IRSSI Channel Takeover Script)
-# Developed by acidvegas in Perl
+# Developed by acidvegas in Perl (thanks to munki/www for help)
 # http://github.com/acidvegas/irssi
 # takeover.pl
 
