@@ -3,6 +3,9 @@
 # http://github.com/acidvegas/irssi
 # takeover.pl
 
+# Usage: /takeover <KICK/TOPIC MESSAGE>
+# The script will +eI your username so if you get *:Lined you can still ban/invite evade using the same username on a different host.
+
 use strict;
 use Irssi;
 use Irssi::Irc;
