@@ -1,6 +1,6 @@
 # Takeover (IRSSI Channel Takeover Script)
 # Developed by acidvegas in Perl
-# http://github.com/acidvegas
+# http://github.com/acidvegas/irssi
 # takeover.pl
 
 use strict;
@@ -13,46 +13,15 @@ sub takeover {
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "No active channel in window."),    return if (!$channel or ($channel->{type} ne "CHANNEL"));
     my $own_prefixes = $channel->{ownnick}{prefixes};
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "You are not a channel operator."), return if (!$own_prefixes =~ /~|&|@|%/);
-    my ($qops, $aops, $hops, $qcount, $acount, $hcount, $modes);
-    my $hostname      = $channel->{ownnick}{host};
-    my $nicklist      = $channel->nicks();
-    foreach my $nick ($channel->nicks()) {
-        next if ($nick eq $server->{nick});
-        if ($nick->{prefixes} =~ /~/) {
-            $qops .= "$nick->{nick} ";
-            $qcount++;
-        }
-        if ($nick->{prefixes} =~ /&/) {
-            $aops .= "$nick->{nick} ";
-            $acount++;
-        }
-        if ($nick->{halfop}) {
-            $hops .= "$nick->{nick} ";
-            $hcount++;
-        }
-    }
-    if ($qops) {
-        $modes = "q" x $qcount;
-        $channel->command("mode -$modes $qops");
-    }
-    if ($aops) {
-        $modes = "a" x $qcount;
-        $channel->command("mode -$modes $aops");
-    }
-    if ($hops) {
-        $modes = "h" x $qcount;
-        $channel->command("mode -$modes $hops");
-    }
-    $channel->command("deop -YES *");
-    $channel->command("devoice -YES *");
-    foreach ($channel->nicks()) {
-        next if ($_->{'nick'} eq $server->{nick});
-        $channel->command("kickban $_->{'nick'} $data");
-    }
-    $channel->command("ban *!*@*");
-    $channel->command("mode +im");
-    $channel->command("mode +e *!$hostname");
-    $channel->command("mode +I *!$hostname");
+    my ($username, $hostname) = split(/@/, $channel->{ownnick}{host});
+    my @nicknames = grep { !/$server->{nick}/ } map {$_->{nick}} $channel->nicks();
+    my @qops      = grep { !/$server->{nick}/ } map { $_->{prefixes} =~ /[~!]/ ? $_->{nick} : () } $channel->nicks();
+    my @aops      = grep { !/$server->{nick}/ } map { $_->{prefixes} =~ /[&]/  ? $_->{nick} : () } $channel->nicks();
+    my @hops      = grep { !/$server->{nick}/ } map { $_->{halfop}             ? $_->{nick} : () } $channel->nicks();
+    my @ops       = grep { !/$server->{nick}/ } map { $_->{op}                 ? $_->{nick} : () } $channel->nicks();
+    $channel->command("mode -" . "q" x @qops . "a" x @aops . "h" x @hops . "o" x @ops . " @qops @aops @hops @ops");
+    $channel->command("kickban " . join(",", @nicknames) . " $data");
+    $channel->command("mode +imbeeII *!*@* *!*\@$hostname *!$username@* *!*\@$hostname *!$username@*");
     $channel->command("topic $data");
 }
 
