@@ -21,7 +21,7 @@ aliases = {
   bs             = "eval lastlog -file ~/.irssi/logs/${C}@${chatnet}.${0}.log";
   chatrain       = "eval msg $C             ya                                                                                                                                                                                          nice; eval msg $C                                             chillin                                                                                                                                                                                 u?; eval msg $C                                                                                     nice                                                                            ty                                                              np; eval msg $C                                              ok                                                                                                                nice                                                                 %%                                                                                                       true; eval msg $C                                                                                      same;";
   cooldown       = "eval msg $C \00301,08/!\\\\\\\\\00308,04 WARNING \00301,08/!\\\\\\\\\003 \00304This keyboard is currently on \00312COOL DOWN\00304 until $0 can handle it.";
-  cooleddown     = "eval msg $C [\00309ALERT\003] This keyboard is no longer on fire. Chats my proceed accordingly.";
+  cooleddown     = "eval msg $C [\00309ALERT\003] This keyboard is no longer on fire. Chats may proceed accordingly.";
   emergency      = "eval msg $C \002\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!\00300,04 IRC EMERGENCY \003\00308!\00301,08!\003\00308!";
   exempt         = "mode +eI *!$X *!$X";
   fakick         = "eval msg $C \00314<\00305Kick\00314>\017 \002$0\017 was kicked by \002$N\017 \00314[\017$1-\00314]\017";
@@ -159,6 +159,7 @@ settings = {
     part_message = "G-line: User has been permanently banned from this network.";
     usermode = "+ix";
     skip_motd = "yes";
+    ban_type = "host";
   };
   "irc/flood" = { flood_timecheck = "0"; flood_max_msgs = "0"; };
   "fe-common/core" = {
@@ -167,6 +168,12 @@ settings = {
     term_charset = "UTF-8";
     max_command_history = "25";
     autolog_path = "~/.irssi/logs/$tag/$0.log";
+    autocreate_query_level = "MSGS";
+    activity_hilight_level = "MSGS";
+    beep_when_away = "no";
+    beep_when_window_active = "no";
+    hilight_level = "PUBLIC";
+    tls_verbose_connect = "no";
   };
   "perl/core/scripts" = {
     nickcolor_colors = "3 5 6 7 10 11 12 13 14";
