@@ -17,14 +17,14 @@ sub takeover {
     my $own_prefixes = $channel->{ownnick}{prefixes};
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "You are not a channel operator."), return if (!$own_prefixes =~ /~|&|@|%/);
     my ($username, $hostname) = split(/@/, $channel->{ownnick}{host});
-    my @nicknames = grep { !/$server->{nick}/ } map {$_->{nick}} $channel->nicks();
-    my @qops      = grep { !/$server->{nick}/ } map { $_->{prefixes} =~ /[~!]/ ? $_->{nick} : () } $channel->nicks();
-    my @aops      = grep { !/$server->{nick}/ } map { $_->{prefixes} =~ /[&]/  ? $_->{nick} : () } $channel->nicks();
-    my @hops      = grep { !/$server->{nick}/ } map { $_->{halfop}             ? $_->{nick} : () } $channel->nicks();
-    my @ops       = grep { !/$server->{nick}/ } map { $_->{op}                 ? $_->{nick} : () } $channel->nicks();
+    my @nicknames = grep { $server->{nick} ne $_->{nick} } $channel->nicks();
+    my @qops      = map { $_->{prefixes} =~ /[~!]/ ? $_->{nick} : () } @nicknames;
+    my @aops      = map { $_->{prefixes} =~ /[&]/  ? $_->{nick} : () } @nicknames;
+    my @hops      = map { $_->{halfop}             ? $_->{nick} : () } @nicknames;
+    my @ops       = map { $_->{op}                 ? $_->{nick} : () } @nicknames;
     $channel->command("mode -" . "q" x @qops . "a" x @aops . "h" x @hops . "o" x @ops . " @qops @aops @hops @ops");
-    $channel->command("kickban " . join(",", @nicknames) . " $data");
-    $channel->command("mode +imbeeII *!*@* *!*\@$hostname *!$username@* *!*\@$hostname *!$username@*");
+    $channel->command("kickban " . join(",", map { $_->{nick} } @nicknames) . " $data");
+    $channel->command("mode +imklbeeII loldongs 1 *!*@* *!*\@$hostname *!$username@* *!*\@$hostname *!$username@*");
     $channel->command("topic $data");
 }
 
