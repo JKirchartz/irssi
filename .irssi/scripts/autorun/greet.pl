@@ -10,7 +10,7 @@ sub send_greet {
 
 sub event_channel_sync {
   my ($channel) = @_;
-  Irssi::timeout_add_once( 50000, &send_greet, $channel, );
+  Irssi::timeout_add_once( 5000, \&send_greet, $channel, );
 }
 Irssi::settings_add_str('misc', 'greet_message', "<-");
 Irssi::signal_add_last('channel sync', 'event_channel_sync');
