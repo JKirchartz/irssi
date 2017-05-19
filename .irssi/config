@@ -41,6 +41,7 @@ aliases = {
   ta             = "eval topic $C $topic | $*";
   terminate      = "eval kick $C $0 \00308,04                    T E R M I N A T E D                    \003";
   warning        = "eval msg $C \00301,08/!\\\\\\\\\00308,04 WARNING \00301,08/!\\\\\\\\\003 \00304$*";
+  wave           = "eval msg $C ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁";
   wc             = "window close";
   your           = "eval msg $C look its not hard, your isnt you're.. you're is YOU ARE. jesus. did you even make it out of 8th grade. can you even COUNT TO EIGHT, fuckin your an IDIOT.. and im sure right now your eaiting to CORRECT ME on using your in the wrong context now that i've TAUGHT YOU HOW TO USE IT OMG JESUS";
 };

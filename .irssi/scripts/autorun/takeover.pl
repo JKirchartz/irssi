@@ -1,5 +1,5 @@
 # Takeover (IRSSI Channel Takeover Script)
-# Developed by acidvegas in Perl (thanks to munki/www for help)
+# Developed by acidvegas in Perl (thanks to munki/www/mr_vile for help)
 # http://github.com/acidvegas/irssi
 # takeover.pl
 
@@ -17,12 +17,15 @@ sub takeover {
     my $own_prefixes = $channel->{ownnick}{prefixes};
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "You are not a channel operator."), return if (!$own_prefixes =~ /~|&|@|%/);
     my ($username, $hostname) = split(/@/, $channel->{ownnick}{host});
-    my @nicknames = grep { $server->{nick} ne $_->{nick} } $channel->nicks();
-    my @qops      = map { $_->{prefixes} =~ /[~!]/ ? $_->{nick} : () } @nicknames;
-    my @aops      = map { $_->{prefixes} =~ /[&]/  ? $_->{nick} : () } @nicknames;
-    my @hops      = map { $_->{halfop}             ? $_->{nick} : () } @nicknames;
-    my @ops       = map { $_->{op}                 ? $_->{nick} : () } @nicknames;
-    $channel->command("mode -" . "q" x @qops . "a" x @aops . "h" x @hops . "o" x @ops . " @qops @aops @hops @ops");
+    my @nicknames = grep { $username ne $_->{nick} } $channel->nicks();
+    my %modes = qw(! q ~ q & a @ o % h);
+    for my $name (@nicknames) {
+        for (split '', $name->{prefixes}) {
+            $a .= "$modes{$_}"     if $modes{$_};
+            $b .= "$name->{nick} " if $modes{$_};
+        }
+    }
+    $channel->command("MODE -$a $b");
     $channel->command("kickban " . join(",", map { $_->{nick} } @nicknames) . " $data");
     $channel->command("mode +imklbeeII loldongs 1 *!*@* *!*\@$hostname *!$username@* *!*\@$hostname *!$username@*");
     $channel->command("topic $data");
