@@ -161,6 +161,7 @@ settings = {
     usermode = "+ix";
     skip_motd = "yes";
     ban_type = "host";
+    kick_first_on_kickban = "yes";
   };
   "irc/flood" = { flood_timecheck = "0"; flood_max_msgs = "0"; };
   "fe-common/core" = {
