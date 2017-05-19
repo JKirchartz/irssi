@@ -1,14 +1,21 @@
-# Takeover (IRSSI Channel Takeover Script)
-# Developed by acidvegas in Perl (thanks to munki/www/mr_vile for help)
-# http://github.com/acidvegas/irssi
-# takeover.pl
-
 # Usage: /takeover <KICK/TOPIC MESSAGE>
 # The script will +eI your username so if you get *:Lined you can still ban/invite evade using the same username on a different host.
+
+# Todo: Add the max possible +eI for an incremented nick string to further ban evade.
 
 use strict;
 use Irssi;
 use Irssi::Irc;
+
+our $VERSION = '1.0';
+our %IRSSI = (
+    authors     => 'acidvegas (help from mr_vile/munki/www)',
+    contact     => 'acidvegas@supernets.org',
+    name        => 'Takeover',
+    description => 'A channel takeover script to remove all +qaoh, kickban all nicks, and lock down the channel.',
+    license     => 'ISC',
+    url         => 'http://github.com/acidvegas/irssi',
+);
 
 sub takeover {
     my ($data, $server, $channel) = @_;
