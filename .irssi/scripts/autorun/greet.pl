@@ -2,16 +2,6 @@ use strict;
 use Irssi;
 use Irssi::Irc;
 
-our $VERSION = '1.0';
-our %IRSSI = (
-    authors     => 'acidvegas (help from mr_vile/munki)',
-    contact     => 'acidvegas@supernets.org',
-    name        => 'Greet',
-    description => 'A script that sends a delayed message into the channel anytime you join.',
-    license     => 'ISC',
-    url         => 'http://github.com/acidvegas/irssi',
-);
-
 sub send_greet {
     my ($channel) = @_;
     my $msg = Irssi::settings_get_str('greet_message');
