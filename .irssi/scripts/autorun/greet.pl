@@ -25,5 +25,5 @@ sub event_channel_sync {
 }
 
 Irssi::settings_add_int('misc', 'greet_delay', 3);
-Irssi::settings_add_str('misc', 'greet_message', "<-");
+Irssi::settings_add_str('misc', 'greet_message', "The greatest chatter in the world has just arrived.");
 Irssi::signal_add_last('channel sync', 'event_channel_sync');

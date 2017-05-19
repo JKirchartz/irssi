@@ -186,6 +186,7 @@ settings = {
     chansort_autosort = "yes";
     awl_mouse = "yes";
     screen_away_message = "I am away from the keyboard. (screen is dettached)"
+    greet_message = "<-";
   };
 };
 
