@@ -21,8 +21,7 @@ sub takeover {
     my ($data, $server, $channel) = @_;
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "Not connected to server."),        return if (!$server or !$server->{connected});
     Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "No active channel in window."),    return if (!$channel or ($channel->{type} ne "CHANNEL"));
-    my $own_prefixes = $channel->{ownnick}{prefixes};
-    Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "You are not a channel operator."), return if (!$own_prefixes =~ /~|&|@|%/);
+    Irssi::printformat(MSGLEVEL_CLIENTCRAP, "takeover_crap", "You are not a channel operator."), return if ($channel->{ownnick}{prefixes} !~ /[~&@%]/);
     my ($username, $hostname) = split(/@/, $channel->{ownnick}{host});
     my @nicknames = grep { $username ne $_->{nick} } $channel->nicks();
     my %modes = qw(! q ~ q & a @ o % h);
