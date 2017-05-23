@@ -22,7 +22,7 @@ sub sig_public {
           $count++;
       }
   }
-  if ($count > 3) {
+  if ($count > $max_num_nicks) {
       $channel->command("kick $target $nick ENTER THE VOID");
   }
 }
