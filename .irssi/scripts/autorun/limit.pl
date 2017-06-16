@@ -14,9 +14,8 @@ our %IRSSI = (
 
 sub limit {
     my ($data, $server, $channel) = @_;
-    my @nicklist = $channel->nicks();
-    my $totalnicks = scalar @nicklist;
-    my $limit_num = $totalnicks + 10;
+    my @nicklist  = $channel->nicks();
+    my $limit_num = @nicklist + 10;
     $channel->command("mode +l $limit_num");
 }
 
